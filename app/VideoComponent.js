@@ -31,6 +31,10 @@ export default class VideoComponent extends Component {
 	}
 
 	joinRoom() {
+		if(MD5(prompt("Enter your password!","")) != "2c653f7297d8479c4db1eab83745084b"){
+			alert("Incorrect password");
+			return;
+		}
 		if (!this.state.roomName.trim()) {
 			this.setState({ roomNameErr: true });
 			return;
