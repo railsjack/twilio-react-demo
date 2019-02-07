@@ -10,7 +10,7 @@ var AccessToken = require("twilio").jwt.AccessToken;
 var VideoGrant = AccessToken.VideoGrant;
 
 var app = express();
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
 if(process.env.NODE_ENV === "DEV") { // Configuration for development environment
     var webpackDevMiddleware = require("webpack-dev-middleware");
     var webpackHotMiddleware = require("webpack-hot-middleware");
@@ -43,12 +43,9 @@ app.get("/token", function(request, response) {
     // containing the grant we just created
 
     var token = new AccessToken(
-        //process.env.TWILIO_ACCOUNT_SID,
-        //process.env.TWILIO_API_KEY,
-        //process.env.TWILIO_API_SECRET
-        "ACd6a8336afa3d3e110b98f988c259ef20",
-        "SKc38c2c63b542d25e61782aae7e19c25d",
-        "xJFCRsBleEc36Kvk4uMdx6BEZC2GjBjC"
+        process.env.TWILIO_ACCOUNT_SID,
+        process.env.TWILIO_API_KEY,
+        process.env.TWILIO_API_SECRET
     );
 
     // Assign the generated identity to the token
